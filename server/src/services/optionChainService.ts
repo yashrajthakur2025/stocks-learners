@@ -39,7 +39,7 @@ export interface OptionChainResult {
  */
 export async function fetchOptionChain(
   searchId: string,
-  expiry?: string,
+  _expiry?: string,
 ): Promise<OptionChainResult> {
   const url = `https://groww.in/v1/api/stocks_fo_data/v4/option_chain/${encodeURIComponent(searchId)}`;
 
@@ -56,7 +56,7 @@ export async function fetchOptionChain(
     );
   }
 
-  const data = await response.json();
+  const data: any = await response.json();
 
   // Parse the Groww option chain response
   const spotPrice = data.spotPrice ?? data.ltp ?? 0;
